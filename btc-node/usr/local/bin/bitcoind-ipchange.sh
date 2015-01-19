@@ -3,7 +3,7 @@
 # CRONTAB
 # */5 * * * *  /bin/bash -l -c '/usr/local/bin/bitcoind-ipchange.sh >> /home/xxx/bitcoind-ipchange.log'
 
-EXT_IP=$(ssh -i /home/xxx/.ssh/id_dsa.pub myip@router /ip address print | perl -lne 'print $1 if /\s(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\/32/;')
+EXT_IP=$(ssh -i /home/xxx/.ssh/id_dsa myip@router /ip address print | perl -lne 'print $1 if /\s(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\/32/;')
 BTC_IP=$(bitcoind getnetworkinfo | perl -lne 'print $1 if /^\s+"address"\s:\s"(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})",$/;')
 
 # DEBUG
