@@ -1,0 +1,18 @@
+[Unit]
+Description=BitcoinXT Daemon
+Conflicts=bitcoin-reindex.service
+After=network.target
+
+[Service]
+User=bitcoin
+Group=bitcoin
+ExecStart=/usr/local/bin/bitcoind -daemon=0                             \
+                            -conf=/etc/bitcoin/bitcoin.conf             \
+                            -datadir=/srv/bitcoin                       \
+                            -pid=/run/bitcoind.pid                      \
+                            -logips
+ExecReload=/usr/bin/kill -HUP $MAINPID
+ExecStop=/usr/local/bin/bitcoin-cli --conf=/etc/bitcoin/bitcoin.conf stop
+
+[Install]
+WantedBy=multi-user.target
