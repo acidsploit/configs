@@ -1,0 +1,6 @@
+# Generating Diffie Hellman parameters with OpenSSL
+# Speed up the process with -dsaparam
+# READ https://security.stackexchange.com/questions/95178/diffie-hellman-parameters-still-calculating-after-24-hours/95184#95184
+# READ https://security.stackexchange.com/questions/54359/what-is-the-difference-between-diffie-hellman-generator-2-and-5/54367#54367
+
+openssl dhparam -dsaparam -out /etc/ssl/private/dhparam.pem 4096
